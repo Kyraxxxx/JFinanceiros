@@ -35,7 +35,7 @@
       "$uid": {
         ".read": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
         ".write": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
-        ".validate": "newData.hasChildren(['uid', 'email', 'status', 'requestedAt']) && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending'"
+        ".validate": "auth.token.email === 'railanebastossouza@gmail.com' || (newData.hasChildren(['uid', 'email', 'status', 'requestedAt']) && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending')"
       }
     }
   }
