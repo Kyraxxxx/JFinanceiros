@@ -38,6 +38,13 @@
         ".write": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
         ".validate": "auth.token.email === 'railanebastossouza@gmail.com' || (newData.hasChildren(['uid', 'email', 'status', 'requestedAt']) && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending')"
       }
+    },
+    "feedbacks": {
+      ".read": "auth != null && auth.token.email === 'railanebastossouza@gmail.com'",
+      "$feedbackId": {
+        ".write": "auth != null && newData.child('uid').val() === auth.uid",
+        ".validate": "newData.hasChildren(['uid', 'email', 'type', 'message', 'createdAt']) && newData.child('uid').val() === auth.uid && newData.child('message').isString() && newData.child('message').val().length <= 1000 && (newData.child('type').val() === 'sugestão' || newData.child('type').val() === 'elogio' || newData.child('type').val() === 'problema')"
+      }
     }
   }
 }
