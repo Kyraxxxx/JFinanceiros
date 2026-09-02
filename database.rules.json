@@ -21,21 +21,21 @@
             "progress": {
               ".validate": "!newData.exists() || (newData.isNumber() && newData.val() >= 0 && newData.val() <= 100)"
             }
-          },
-          "access": {
-            "$uid": {
-              ".read": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
-              ".write": "auth != null && auth.token.email === 'railanebastossouza@gmail.com'"
-            }
-          },
-          "accessRequests": {
-            "$uid": {
-              ".read": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
-              ".write": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
-              ".validate": "newData.hasChildren(['uid', 'email', 'status', 'requestedAt']) && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending'"
-            }
           }
         }
+      }
+    },
+    "access": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
+        ".write": "auth != null && auth.token.email === 'railanebastossouza@gmail.com'"
+      }
+    },
+    "accessRequests": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
+        ".write": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
+        ".validate": "newData.hasChildren(['uid', 'email', 'status', 'requestedAt']) && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending'"
       }
     }
   }
