@@ -32,6 +32,7 @@
       }
     },
     "accessRequests": {
+      ".read": "auth != null && auth.token.email === 'railanebastossouza@gmail.com'",
       "$uid": {
         ".read": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
         ".write": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
