@@ -24,14 +24,14 @@
           },
           "access": {
             "$uid": {
-              ".read": "auth != null && auth.uid === $uid",
-              ".write": false
+              ".read": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
+              ".write": "auth != null && auth.token.email === 'railanebastossouza@gmail.com'"
             }
           },
           "accessRequests": {
             "$uid": {
-              ".read": "auth != null && auth.uid === $uid",
-              ".write": "auth != null && auth.uid === $uid",
+              ".read": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
+              ".write": "auth != null && (auth.uid === $uid || auth.token.email === 'railanebastossouza@gmail.com')",
               ".validate": "newData.hasChildren(['uid', 'email', 'status', 'requestedAt']) && newData.child('uid').val() === auth.uid && newData.child('status').val() === 'pending'"
             }
           }
