@@ -1,0 +1,29 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "$collection": {
+          "$record": {
+            ".validate": "newData.hasChildren(['createdAt'])",
+            "createdAt": {
+              ".validate": "newData.isNumber() || newData.val() == now"
+            },
+            "amount": {
+              ".validate": "!newData.exists() || (newData.isNumber() && newData.val() >= 0 && newData.val() <= 100000000)"
+            },
+            "quantity": {
+              ".validate": "!newData.exists() || (newData.isNumber() && newData.val() >= 0 && newData.val() <= 100000000)"
+            },
+            "progress": {
+              ".validate": "!newData.exists() || (newData.isNumber() && newData.val() >= 0 && newData.val() <= 100)"
+            }
+          }
+        }
+      }
+    }
+  }
+}
